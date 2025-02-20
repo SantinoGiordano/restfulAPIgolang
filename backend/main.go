@@ -1,5 +1,6 @@
 package main
 
+import "github.com/gin-gonic/gin"
 
 type album struct {
 	ID     string  `json:"id"`
