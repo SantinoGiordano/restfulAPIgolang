@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 type album struct {
 	ID     string  `json:"id"`
@@ -22,4 +26,8 @@ func main() {
 	// router.POST("/albums", postAlbums)
 
 	router.Run("localhost:8080")
+}
+
+func getAlbums(c *gin.Context) {
+    c.IndentedJSON(http.StatusOK, albums)
 }
