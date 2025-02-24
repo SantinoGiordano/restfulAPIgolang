@@ -1,8 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
-
+	
 	"github.com/gin-gonic/gin"
 )
 
@@ -62,7 +63,7 @@ func getAlbumByID(c *gin.Context) {
 func getAlbumByTitle(c *gin.Context) {
 	// title := c.Param("title")
 	title := c.Query("title")
-	
+
 	for _, a := range albums {
 		if a.Title == title {
 			c.IndentedJSON(http.StatusOK, a)
@@ -73,7 +74,20 @@ func getAlbumByTitle(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found by name"})
 }
 
+func deleteAlbums(c *gin.Context) {
+	id := c.Param("id")
+	fmt.Println("Deleting album with ID:", id)
+	fmt.Println("Albums:", albums) // Debugging
 
-func deleteAlbums(c *gin.Context){
-	id := c.Params("id")
+	for i, a := range albums {
+		if a.ID == id {
+			albums = append(albums[:i], albums[i+1:]...)
+			fmt.Println("Album deleted:", a)
+			c.IndentedJSON(http.StatusOK, gin.H{"message": "Album deleted", "album": a})
+			return
+		}
+	}
+
+	fmt.Println("Album not found with ID:", id)
+	c.JSON(http.StatusNotFound, gin.H{"message": "Album not found"})
 }
