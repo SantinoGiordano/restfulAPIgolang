@@ -27,6 +27,7 @@ func main() {
 	// router.GET("/albums/title/:title", getAlbumByTitle)
 	router.GET("/albums/title", getAlbumByTitle)
 	router.POST("/albums", postAlbums)
+	router.DELETE("/albums/remove/:id", deleteAlbums)
 
 	router.Run("localhost:8080")
 }
@@ -70,4 +71,9 @@ func getAlbumByTitle(c *gin.Context) {
 	}
 
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found by name"})
+}
+
+
+func deleteAlbums(c *gin.Context){
+	id := c.Params("id")
 }
