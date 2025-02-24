@@ -24,7 +24,8 @@ func main() {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumByID)
-	router.GET("/albums/title/:title", getAlbumByTitle)
+	// router.GET("/albums/title/:title", getAlbumByTitle)
+	router.GET("/albums/title", getAlbumByTitle)
 	router.POST("/albums", postAlbums)
 
 	router.Run("localhost:8080")
@@ -58,8 +59,9 @@ func getAlbumByID(c *gin.Context) {
 }
 
 func getAlbumByTitle(c *gin.Context) {
-	title := c.Param("title")
-
+	// title := c.Param("title")
+	title := c.Query("title")
+	
 	for _, a := range albums {
 		if a.Title == title {
 			c.IndentedJSON(http.StatusOK, a)
