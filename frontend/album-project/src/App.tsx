@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 interface Album {
   id: number;
   title: string;
-  
+  price: number;
 }
 
 function App() {
@@ -26,9 +26,12 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="space-y-4 p-4">
       {message.map((item) => (
-        <li key={item.id}>{item.title}</li>
+        <div key={item.id} className="border p-4 rounded-lg shadow-md">
+          <div className="text-xl font-bold text-blue-600">{item.title}</div>
+          <div className="text-lg text-green-600">${item.price}</div>
+        </div>
       ))}
     </div>
   );
