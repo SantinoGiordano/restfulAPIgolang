@@ -16,18 +16,18 @@ type album struct {
 }
 
 var albums = []album{
-	{ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99, Image: "https://via.placeholder.com/300"},
-	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99, Image: "https://via.placeholder.com/300"},
-	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99, Image: "https://via.placeholder.com/300"},
-	{ID: "4", Title: "Kind of Blue", Artist: "Miles Davis", Price: 49.99, Image: "https://via.placeholder.com/300"},
-	{ID: "5", Title: "Giant Steps", Artist: "John Coltrane", Price: 54.99, Image: "https://via.placeholder.com/300"},
-	{ID: "6", Title: "The Best of Chet Baker", Artist: "Chet Baker", Price: 29.99, Image: "https://via.placeholder.com/300"},
-	{ID: "7", Title: "Time Out", Artist: "The Dave Brubeck Quartet", Price: 42.99, Image: "https://via.placeholder.com/300"},
-	{ID: "8", Title: "Blue in Green", Artist: "Bill Evans", Price: 47.99, Image: "https://via.placeholder.com/300"},
-	{ID: "9", Title: "Moanin'", Artist: "Art Blakey and the Jazz Messengers", Price: 38.99, Image: "https://via.placeholder.com/300"},
-	{ID: "10", Title: "Sketches of Spain", Artist: "Miles Davis", Price: 55.99, Image: "https://via.placeholder.com/300"},
-	{ID: "11", Title: "Mingus Ah Um", Artist: "Charles Mingus", Price: 45.99, Image: "https://via.placeholder.com/300"},
-	{ID: "12", Title: "A Love Supreme", Artist: "John Coltrane", Price: 49.99, Image: "https://via.placeholder.com/300"},
+	{ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99, Image: "https://placehold.co/100x100"},
+	{ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99, Image: "https://placehold.co/100x100"},
+	{ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99, Image: "https://placehold.co/100x100"},
+	{ID: "4", Title: "Kind of Blue", Artist: "Miles Davis", Price: 49.99, Image: "https://placehold.co/100x100"},
+	{ID: "5", Title: "Giant Steps", Artist: "John Coltrane", Price: 54.99, Image: "https://placehold.co/100x100"},
+	{ID: "6", Title: "The Best of Chet Baker", Artist: "Chet Baker", Price: 29.99, Image: "https://placehold.co/100x100"},
+	{ID: "7", Title: "Time Out", Artist: "The Dave Brubeck Quartet", Price: 42.99, Image: "https://placehold.co/100x100"},
+	{ID: "8", Title: "Blue in Green", Artist: "Bill Evans", Price: 47.99, Image: "https://placehold.co/100x100"},
+	{ID: "9", Title: "Moanin'", Artist: "Art Blakey and the Jazz Messengers", Price: 38.99, Image: "https://placehold.co/100x100"},
+	{ID: "10", Title: "Sketches of Spain", Artist: "Miles Davis", Price: 55.99, Image: "https://placehold.co/100x100"},
+	{ID: "11", Title: "Mingus Ah Um", Artist: "Charles Mingus", Price: 45.99, Image: "https://placehold.co/100x100"},
+	{ID: "12", Title: "A Love Supreme", Artist: "John Coltrane", Price: 49.99, Image: "https://placehold.co/100x100"},
 }
 
 func main() {
