@@ -4,7 +4,7 @@ interface Album {
   id: number;
   title: string;
   price: number;
-  placeholder:string
+  image:string;
 }
 
 function ListOfAlbums() {
@@ -30,10 +30,12 @@ function ListOfAlbums() {
     <div className="space-y-4 p-4">
     {message.length > 0 ? (
       message.map((item) => (
-        <div key={item.id} className="border border-gray-300 p-4 rounded-lg shadow-md bg-white">
-          <div className="text-xl font-bold text-gray-900">{item.title}</div>
-          <div className="text-lg text-gray-600">${item.price}</div>
-          
+        <div key={item.id} className="border border-gray-300 p-4 rounded-lg shadow-md bg-white flex items-center justify-between">
+          <div>
+            <div className="text-xl font-bold text-gray-900">{item.title}</div>
+            <div className="text-lg text-gray-600">${item.price}</div>
+          </div>
+          <img src={item.image} alt={item.title} className="w-24 h-24 rounded-md object-cover" />
         </div>
       ))
     ) : (
@@ -42,7 +44,7 @@ function ListOfAlbums() {
       </div>
     )}
   </div>
-  );
+  )  
 }
 
 export default ListOfAlbums;
