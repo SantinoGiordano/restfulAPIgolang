@@ -12,7 +12,7 @@ type album struct {
 	Title  string  `json:"title"`
 	Artist string  `json:"artist"`
 	Price  float64 `json:"price"`
-	Image  float64 `json:"image"`
+	Image  string `json:"image"`
 }
 
 var albums = []album{
