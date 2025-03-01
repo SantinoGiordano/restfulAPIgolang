@@ -4,6 +4,7 @@ interface Album {
   id: number;
   title: string;
   price: number;
+  placeholder:string
 }
 
 function ListOfAlbums() {
@@ -32,6 +33,7 @@ function ListOfAlbums() {
         <div key={item.id} className="border border-gray-300 p-4 rounded-lg shadow-md bg-white">
           <div className="text-xl font-bold text-gray-900">{item.title}</div>
           <div className="text-lg text-gray-600">${item.price}</div>
+          
         </div>
       ))
     ) : (
