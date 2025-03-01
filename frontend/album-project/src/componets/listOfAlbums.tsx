@@ -14,26 +14,32 @@ function ListOfAlbums() {
       try {
         const response = await fetch("http://localhost:8080/albums");
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         const data = await response.json();
         setMessage(data); // Assuming the API returns an array of Album objects
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
-    fetchData()
+    fetchData();
   }, []);
 
   return (
     <div className="space-y-4 p-4">
-      {message.map((item) => (
-        <div key={item.id} className="border p-4 rounded-lg shadow-md">
-          <div className="text-xl font-bold text-blue-600">{item.title}</div>
-          <div className="text-lg text-green-600">${item.price}</div>
+    {message.length > 0 ? (
+      message.map((item) => (
+        <div key={item.id} className="border border-gray-300 p-4 rounded-lg shadow-md bg-white">
+          <div className="text-xl font-bold text-gray-900">{item.title}</div>
+          <div className="text-lg text-gray-600">${item.price}</div>
         </div>
-      ))}
-    </div>
+      ))
+    ) : (
+      <div className="text-center text-gray-500 text-lg font-semibold">
+        Albums could not be found
+      </div>
+    )}
+  </div>
   );
 }
 
