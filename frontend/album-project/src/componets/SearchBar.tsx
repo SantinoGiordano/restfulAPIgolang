@@ -4,6 +4,14 @@ const SearchBar = () => {
 
     const [input,setInput] = useState("")
 
+    const fetchData = (value) => {
+        fetch("http://localhost:8080/albums")
+    }
+    const handleCahnge = (value)=>{
+        setInput(value)
+        fetchData(avlue)
+    }
+
 return (
     <div>
         <input
@@ -12,7 +20,7 @@ return (
         type="text"
         placeholder="Search for albums..." 
         value={input} 
-        onChange={(e)=> setInput(e.target.value)}
+        onChange={(e)=> handleCahnge(e.target.value)}
         />
     </div>
   )
