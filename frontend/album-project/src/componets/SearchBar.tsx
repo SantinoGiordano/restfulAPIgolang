@@ -1,36 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
+  const [results, setResults] = useState([]);
 
-  const fetchData = async (value: string) => {
-    try {
-      const response = await fetch("http://localhost:8080/albums");
-      const json = await response.json();
-      console.log(json); // Here, you may want to filter results based on `value`
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!input.trim()) {
+        setResults([]);
+        return;
+      }
 
-  const handleChange = (value: string) => {
-    setInput(value);
-    fetchData(value);
-  };
+      try {
+        const response = await fetch("http://localhost:8080/albums");
+        const json = await response.json();
+        const filteredResults = json.filter((item) =>
+          item?.title?.toLowerCase().includes(input.toLowerCase())
+        );
+        setResults(filteredResults);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    const timeoutId = setTimeout(fetchData, 500); // Debounce for 500ms
+    return () => clearTimeout(timeoutId);
+  }, [input]);
 
   return (
-    <div>
+    <div className="relative w-80">
       <input
         id="album-search"
-        className="p-3 text-lg border-2 border-gray-300 rounded-lg w-64 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="input input-bordered input-lg w-full shadow-lg focus:ring focus:ring-blue-400"
         type="text"
         placeholder="Search for albums..."
         value={input}
-        onChange={(e) => handleChange(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
       />
+      
+      {input && (
+        <ul className="absolute left-0 right-0 mt-2 bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden z-50">
+          {results.length > 0 ? (
+            results.map((album, index) => (
+              <li
+                key={index}
+                className="px-4 py-2 hover:bg-blue-500 hover:text-white cursor-pointer transition-all"
+              >
+                {album.title}
+              </li>
+            ))
+          ) : (
+            <li className="px-4 py-2 text-gray-500">No results found</li>
+          )}
+        </ul>
+      )}
     </div>
   );
 };
 
 export default SearchBar;
-
